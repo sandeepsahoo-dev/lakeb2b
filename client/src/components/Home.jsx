@@ -6,6 +6,7 @@ import DataTrustSection from './DataTrustSection';
 import DataSolutions from './DataSolutions';
 import B2BDataCloud from './B2BDataCloud';
 import RealBusinessImpact from './RealBusinessImpact';
+import MultiChannelCampaigns from './MultiChannelCampaigns';
 import Login from './Login';
 import Search from './Search';
 import ContactSales from './ContactSales';
@@ -61,6 +62,10 @@ const Home = () => {
         <DataSolutions />
         <B2BDataCloud />
         <RealBusinessImpact
+          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenExpert={handleOpenExpert}
+        />
+        <MultiChannelCampaigns
           onOpenContactSales={() => setContactSalesOpen(true)}
           onOpenExpert={handleOpenExpert}
         />
