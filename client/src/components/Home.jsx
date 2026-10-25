@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Body from './Body';
 import Footer from './Footer';
@@ -37,8 +38,14 @@ const Home = () => {
     };
   }, []);
 
+  const navigate = useNavigate();
+
   const handleOpenExpert = (mode = 'talk_expert', prefilledIndustry = '') => {
-    setExpertModal({ open: true, mode, prefilledIndustry });
+    if (mode === 'talk_expert') {
+      navigate('/talk-to-an-expert');
+    } else {
+      setExpertModal({ open: true, mode, prefilledIndustry });
+    }
   };
 
   const handleLoginSuccess = (userData) => {

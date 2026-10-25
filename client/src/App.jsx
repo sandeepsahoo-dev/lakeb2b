@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 
+// Talk To An Expert page
+import TalkToExpert from './pages/TalkToExpert';
+
 // Data Intelligence pages
 import CompanyAPI from './pages/CompanyAPI';
 import PeopleAPI from './pages/PeopleAPI';
@@ -63,6 +66,10 @@ function App() {
       <Routes>
         {/* Home */}
         <Route path="/" element={<Home />} />
+
+        {/* Talk To An Expert */}
+        <Route path="/talk-to-an-expert" element={<TalkToExpert />} />
+        <Route path="/talk-to-expert" element={<TalkToExpert />} />
 
         {/* Data Intelligence */}
         <Route path="/data-intelligence/company-api" element={<CompanyAPI />} />
