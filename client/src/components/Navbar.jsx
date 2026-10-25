@@ -385,13 +385,12 @@ const Navbar = ({
                   position: 'absolute',
                   top: '46px',
                   left: '50%',
-                  transform: 'translateX(-60%)',
+                  transform: 'translateX(-50%)',
                   boxShadow: '0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(168, 85, 247, 0.3)',
                 }}
               >
                 <Resources
                   onClose={() => setActiveDropdown(null)}
-                  onSelectAction={handleDropdownAction}
                 />
               </div>
             )}
