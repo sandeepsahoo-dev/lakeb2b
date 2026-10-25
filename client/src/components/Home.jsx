@@ -4,6 +4,7 @@ import Body from './Body';
 import Footer from './Footer';
 import DataTrustSection from './DataTrustSection';
 import DataSolutions from './DataSolutions';
+import B2BDataCloud from './B2BDataCloud';
 import Login from './Login';
 import Search from './Search';
 import ContactSales from './ContactSales';
@@ -57,6 +58,7 @@ const Home = () => {
         />
         <DataTrustSection />
         <DataSolutions />
+        <B2BDataCloud />
       </main>
 
       {/* Footer */}
