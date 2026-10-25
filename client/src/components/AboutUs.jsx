@@ -1,117 +1,135 @@
 import React from 'react';
-import { Award, Globe2, ShieldAlert, TrendingUp, Building2, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Users, Handshake, Tag, Newspaper, Star } from 'lucide-react';
 
-const AboutUs = ({ onClose, onSelectAction }) => {
+const iconBox = {
+  width: '44px',
+  height: '44px',
+  borderRadius: '10px',
+  backgroundColor: '#f0f0f8',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#6b21a8',
+  flexShrink: 0,
+};
+
+const linkStyle = {
+  display: 'flex',
+  alignItems: 'flex-start',
+  gap: '14px',
+  padding: '14px 16px',
+  borderRadius: '10px',
+  textDecoration: 'none',
+  color: '#111827',
+  transition: 'background 0.15s ease',
+};
+
+const AboutUs = ({ onClose }) => {
   return (
-    <div style={{ padding: '24px 28px', maxWidth: '680px', color: '#ffffff' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{
-              display: 'inline-block',
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              backgroundColor: '#a855f7',
-              boxShadow: '0 0 10px #a855f7'
-            }} />
-            <h3 style={{ fontSize: '18px', fontWeight: '700', letterSpacing: '-0.01em' }}>About LakeB2B</h3>
-          </div>
-          <p style={{ fontSize: '13px', color: '#a79ec2', marginTop: '4px' }}>
-            The growth enablement engine trusted by Fortune 500s and hyper-growth unicorns.
-          </p>
-        </div>
-        {onClose && (
-          <button
-            onClick={onClose}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: '#8e84a8',
-              cursor: 'pointer',
-              fontSize: '18px',
-              padding: '4px 8px',
-            }}
-          >
-            ✕
-          </button>
-        )}
-      </div>
-
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '12px',
-          marginBottom: '20px',
-        }}
+    <div
+      style={{
+        backgroundColor: '#ffffff',
+        borderRadius: '16px',
+        boxShadow: '0 12px 48px rgba(0,0,0,0.18)',
+        width: '520px',
+        overflow: 'hidden',
+        fontFamily: 'var(--font-body)',
+        padding: '12px',
+      }}
+    >
+      {/* About LakeB2B – full width top row */}
+      <Link
+        to="/about/about-lakeb2b"
+        onClick={onClose}
+        style={linkStyle}
+        onMouseEnter={(e) => (e.currentTarget.style.background = '#f5f3ff')}
+        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
       >
-        <div
-          style={{
-            padding: '14px',
-            borderRadius: '10px',
-            backgroundColor: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(168, 85, 247, 0.2)',
-            textAlign: 'center',
-          }}
-        >
-          <Award style={{ color: '#a855f7', width: '24px', height: '24px', margin: '0 auto 6px' }} />
-          <div style={{ fontSize: '18px', fontWeight: '800' }}>16+ Years</div>
-          <div style={{ fontSize: '11px', color: '#9d94b8' }}>Industry Pioneering</div>
+        <div style={iconBox}><Users size={20} /></div>
+        <div>
+          <div style={{ fontWeight: '700', fontSize: '15px', color: '#111827', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            About LakeB2B
+            <span style={{ fontSize: '12px', color: '#7c3aed' }}>›</span>
+          </div>
+          <div style={{ fontSize: '13px', color: '#6b7280', marginTop: '3px', lineHeight: 1.4 }}>
+            Discover LakeB2B's journey as a data-driven solutions pioneer.
+          </div>
         </div>
-        <div
-          style={{
-            padding: '14px',
-            borderRadius: '10px',
-            backgroundColor: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(168, 85, 247, 0.2)',
-            textAlign: 'center',
-          }}
-        >
-          <Building2 style={{ color: '#ec4899', width: '24px', height: '24px', margin: '0 auto 6px' }} />
-          <div style={{ fontSize: '18px', fontWeight: '800' }}>2,000+</div>
-          <div style={{ fontSize: '11px', color: '#9d94b8' }}>Enterprise Clients</div>
-        </div>
-        <div
-          style={{
-            padding: '14px',
-            borderRadius: '10px',
-            backgroundColor: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(168, 85, 247, 0.2)',
-            textAlign: 'center',
-          }}
-        >
-          <Globe2 style={{ color: '#06b6d4', width: '24px', height: '24px', margin: '0 auto 6px' }} />
-          <div style={{ fontSize: '18px', fontWeight: '800' }}>160+</div>
-          <div style={{ fontSize: '11px', color: '#9d94b8' }}>Countries Covered</div>
-        </div>
-      </div>
+      </Link>
 
-      <div style={{ fontSize: '13px', color: '#c7c0db', lineHeight: 1.6, marginBottom: '20px' }}>
-        <p style={{ marginBottom: '10px' }}>
-          At LakeB2B, we believe outbound pipeline shouldn't rely on guesswork. We build bespoke B2B contact intelligence coupled with real-time intent signals, empowering sales and marketing teams to engage decision makers with precision.
-        </p>
-        <p>
-          Whether you prefer consuming clean data streams directly via our low-latency API, or having our growth team orchestrate end-to-end outbound outreach, LakeB2B delivers measurable revenue acceleration.
-        </p>
-      </div>
+      {/* Divider */}
+      <div style={{ borderTop: '1px solid #f3f4f6', margin: '4px 0' }} />
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-        <button
-          onClick={() => onSelectAction && onSelectAction('contact_sales')}
-          style={{
-            background: 'linear-gradient(135deg, #7c3aed, #a855f7)',
-            border: 'none',
-            color: '#ffffff',
-            padding: '9px 18px',
-            borderRadius: '6px',
-            fontSize: '12.5px',
-            fontWeight: '600',
-            cursor: 'pointer',
-          }}
+      {/* 2-col grid: Reseller Partner | News & Events, Whitelabel | Customers */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+        {/* Reseller Partner */}
+        <Link
+          to="/about/reseller-partner"
+          onClick={onClose}
+          style={linkStyle}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#f5f3ff')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
         >
-          Contact Our Leadership
-        </button>
+          <div style={iconBox}><Handshake size={20} /></div>
+          <div>
+            <div style={{ fontWeight: '700', fontSize: '14px', color: '#111827' }}>Reseller Partner</div>
+            <div style={{ fontSize: '12.5px', color: '#6b7280', marginTop: '3px', lineHeight: 1.4 }}>
+              Build relationships with AI-enhanced data reseller programs.
+            </div>
+          </div>
+        </Link>
+
+        {/* News & Events */}
+        <Link
+          to="/about/news-and-events"
+          onClick={onClose}
+          style={linkStyle}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#f5f3ff')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+        >
+          <div style={iconBox}><Newspaper size={20} /></div>
+          <div>
+            <div style={{ fontWeight: '700', fontSize: '14px', color: '#111827' }}>News &amp; Events</div>
+            <div style={{ fontSize: '12.5px', color: '#6b7280', marginTop: '3px', lineHeight: 1.4 }}>
+              Stay updated on strategies to convert leads into revenue.
+            </div>
+          </div>
+        </Link>
+
+        {/* Whitelabel */}
+        <Link
+          to="/about/whitelabel"
+          onClick={onClose}
+          style={linkStyle}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#f5f3ff')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+        >
+          <div style={iconBox}><Tag size={20} /></div>
+          <div>
+            <div style={{ fontWeight: '700', fontSize: '14px', color: '#111827' }}>Whitelabel</div>
+            <div style={{ fontSize: '12.5px', color: '#6b7280', marginTop: '3px', lineHeight: 1.4 }}>
+              See how industries use databases to close deals faster.
+            </div>
+          </div>
+        </Link>
+
+        {/* Customers */}
+        <Link
+          to="/about/customers"
+          onClick={onClose}
+          style={linkStyle}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#f5f3ff')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+        >
+          <div style={iconBox}><Star size={20} /></div>
+          <div>
+            <div style={{ fontWeight: '700', fontSize: '14px', color: '#111827' }}>Customers</div>
+            <div style={{ fontSize: '12.5px', color: '#6b7280', marginTop: '3px', lineHeight: 1.4 }}>
+              See how industries use databases to close deals faster.
+            </div>
+          </div>
+        </Link>
       </div>
     </div>
   );

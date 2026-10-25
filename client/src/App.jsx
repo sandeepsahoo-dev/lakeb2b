@@ -36,6 +36,13 @@ import Manufacturing from './pages/industries/Manufacturing';
 import Pharmaceutical from './pages/industries/Pharmaceutical';
 import MedicalDevices from './pages/industries/MedicalDevices';
 
+// About Us pages
+import AboutLakeB2B from './pages/aboutus/AboutLakeB2B';
+import ResellerPartner from './pages/aboutus/ResellerPartner';
+import Whitelabel from './pages/aboutus/Whitelabel';
+import NewsAndEvents from './pages/aboutus/NewsAndEvents';
+import Customers from './pages/aboutus/Customers';
+
 function App() {
   return (
     <BrowserRouter>
@@ -76,6 +83,13 @@ function App() {
         <Route path="/industries/manufacturing" element={<Manufacturing />} />
         <Route path="/industries/pharmaceutical" element={<Pharmaceutical />} />
         <Route path="/industries/medical-devices" element={<MedicalDevices />} />
+
+        {/* About Us */}
+        <Route path="/about/about-lakeb2b" element={<AboutLakeB2B />} />
+        <Route path="/about/reseller-partner" element={<ResellerPartner />} />
+        <Route path="/about/whitelabel" element={<Whitelabel />} />
+        <Route path="/about/news-and-events" element={<NewsAndEvents />} />
+        <Route path="/about/customers" element={<Customers />} />
       </Routes>
     </BrowserRouter>
   );
