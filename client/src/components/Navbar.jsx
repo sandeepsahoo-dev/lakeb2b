@@ -291,7 +291,6 @@ const Navbar = ({
               >
                 <Industries
                   onClose={() => setActiveDropdown(null)}
-                  onSelectAction={handleDropdownAction}
                 />
               </div>
             )}

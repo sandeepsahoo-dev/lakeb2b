@@ -26,6 +26,16 @@ import GTM from './pages/solutions/GTM';
 import BespokeGrowthSolutions from './pages/solutions/BespokeGrowthSolutions';
 import ExperienceDesign from './pages/solutions/ExperienceDesign';
 
+// Industries pages
+import Healthcare from './pages/industries/Healthcare';
+import Technology from './pages/industries/Technology';
+import Education from './pages/industries/Education';
+import Automotive from './pages/industries/Automotive';
+import OilAndGas from './pages/industries/OilAndGas';
+import Manufacturing from './pages/industries/Manufacturing';
+import Pharmaceutical from './pages/industries/Pharmaceutical';
+import MedicalDevices from './pages/industries/MedicalDevices';
+
 function App() {
   return (
     <BrowserRouter>
@@ -56,6 +66,16 @@ function App() {
         <Route path="/solutions/gtm" element={<GTM />} />
         <Route path="/solutions/bespoke-growth-solutions" element={<BespokeGrowthSolutions />} />
         <Route path="/solutions/experience-design" element={<ExperienceDesign />} />
+
+        {/* Industries */}
+        <Route path="/industries/healthcare" element={<Healthcare />} />
+        <Route path="/industries/technology" element={<Technology />} />
+        <Route path="/industries/education" element={<Education />} />
+        <Route path="/industries/automotive" element={<Automotive />} />
+        <Route path="/industries/oil-and-gas" element={<OilAndGas />} />
+        <Route path="/industries/manufacturing" element={<Manufacturing />} />
+        <Route path="/industries/pharmaceutical" element={<Pharmaceutical />} />
+        <Route path="/industries/medical-devices" element={<MedicalDevices />} />
       </Routes>
     </BrowserRouter>
   );
