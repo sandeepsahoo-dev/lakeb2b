@@ -191,7 +191,6 @@ const Navbar = ({
               >
                 <DataIntelligence
                   onClose={() => setActiveDropdown(null)}
-                  onSelectAction={handleDropdownAction}
                 />
               </div>
             )}
@@ -242,7 +241,6 @@ const Navbar = ({
               >
                 <Solutions
                   onClose={() => setActiveDropdown(null)}
-                  onSelectAction={handleDropdownAction}
                 />
               </div>
             )}
@@ -293,7 +291,6 @@ const Navbar = ({
               >
                 <Industries
                   onClose={() => setActiveDropdown(null)}
-                  onSelectAction={handleDropdownAction}
                 />
               </div>
             )}
