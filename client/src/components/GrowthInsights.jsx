@@ -50,7 +50,7 @@ const GrowthInsights = ({ onOpenContactSales, onOpenExpert }) => {
         padding: '60px 0 95px',
         position: 'relative',
         color: '#0f172a',
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        fontFamily: "'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
     >
       <div

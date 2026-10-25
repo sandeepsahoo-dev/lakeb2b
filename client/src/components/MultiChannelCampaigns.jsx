@@ -253,7 +253,7 @@ const MultiChannelCampaigns = ({ onOpenContactSales, onOpenExpert }) => {
         position: 'relative',
         overflow: 'hidden',
         color: '#ffffff',
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        fontFamily: "'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
     >
       <div

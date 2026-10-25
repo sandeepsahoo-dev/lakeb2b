@@ -54,7 +54,7 @@ const TrustedResults = () => {
         padding: '30px 0 90px',
         position: 'relative',
         color: '#0f172a',
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        fontFamily: "'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
     >
       <div
