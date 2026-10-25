@@ -341,7 +341,6 @@ const Navbar = ({
               >
                 <AboutUs
                   onClose={() => setActiveDropdown(null)}
-                  onSelectAction={handleDropdownAction}
                 />
               </div>
             )}
