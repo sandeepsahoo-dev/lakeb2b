@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Body from './Body';
 import Footer from './Footer';
 import DataTrustSection from './DataTrustSection';
+import DataSolutions from './DataSolutions';
 import Login from './Login';
 import Search from './Search';
 import ContactSales from './ContactSales';
@@ -55,6 +56,7 @@ const Home = () => {
           onOpenContactSales={() => setContactSalesOpen(true)}
         />
         <DataTrustSection />
+        <DataSolutions />
       </main>
 
       {/* Footer */}
