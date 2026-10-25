@@ -10,6 +10,7 @@ import MultiChannelCampaigns from './MultiChannelCampaigns';
 import SuccessStories from './SuccessStories';
 import TrustedResults from './TrustedResults';
 import GrowthInsights from './GrowthInsights';
+import GrowthEcosystemCTA from './GrowthEcosystemCTA';
 import Login from './Login';
 import Search from './Search';
 import ContactSales from './ContactSales';
@@ -78,6 +79,10 @@ const Home = () => {
         />
         <TrustedResults />
         <GrowthInsights
+          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenExpert={handleOpenExpert}
+        />
+        <GrowthEcosystemCTA
           onOpenContactSales={() => setContactSalesOpen(true)}
           onOpenExpert={handleOpenExpert}
         />
