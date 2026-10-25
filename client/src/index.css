@@ -221,6 +221,24 @@ h1, h2, h3, h4, h5, h6 {
   animation: ribbonFloat 9s ease-in-out infinite;
 }
 
+/* ── Trusted Partners Marquee ── */
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* Modals Overlay */
 .modal-backdrop {
   position: fixed;

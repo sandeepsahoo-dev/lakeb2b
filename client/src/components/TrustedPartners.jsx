@@ -160,15 +160,7 @@ const TrustedPartners = () => {
           WebkitMaskImage: 'linear-gradient(90deg, transparent, black 8%, black 92%, transparent)',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0',
-            width: 'max-content',
-            animation: 'marqueeScroll 35s linear infinite',
-          }}
-        >
+        <div className="marquee-track">
           {allBrands.map((brand, idx) => (
             <div
               key={`${brand.name}-${idx}`}
@@ -211,17 +203,7 @@ const TrustedPartners = () => {
         }}
       />
 
-      {/* Keyframes injected via style tag */}
-      <style>{`
-        @keyframes marqueeScroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
+
     </section>
   );
 };
