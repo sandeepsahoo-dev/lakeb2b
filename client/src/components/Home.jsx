@@ -3,6 +3,15 @@ import Navbar from './Navbar';
 import Body from './Body';
 import Footer from './Footer';
 import TrustedPartners from './TrustedPartners';
+import DataTrustSection from './DataTrustSection';
+import DataSolutions from './DataSolutions';
+import B2BDataCloud from './B2BDataCloud';
+import RealBusinessImpact from './RealBusinessImpact';
+import MultiChannelCampaigns from './MultiChannelCampaigns';
+import SuccessStories from './SuccessStories';
+import TrustedResults from './TrustedResults';
+import GrowthInsights from './GrowthInsights';
+import GrowthEcosystemCTA from './GrowthEcosystemCTA';
 import Login from './Login';
 import Search from './Search';
 import ContactSales from './ContactSales';
@@ -16,7 +25,7 @@ const Home = () => {
   const [contactSalesOpen, setContactSalesOpen] = useState(false);
   const [sparkleOpen, setSparkleOpen] = useState(false);
   const [expertModal, setExpertModal] = useState({ open: false, mode: 'talk_expert', prefilledIndustry: '' });
-  
+
   // User state
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -55,16 +64,40 @@ const Home = () => {
           onOpenContactSales={() => setContactSalesOpen(true)}
         />
         <TrustedPartners />
-      </main>
+        <DataTrustSection />
+        <DataSolutions />
+        <B2BDataCloud />
+        <RealBusinessImpact
+          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenExpert={handleOpenExpert}
+        />
+        <MultiChannelCampaigns
+          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenExpert={handleOpenExpert}
+        />
+        <SuccessStories
+          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenExpert={handleOpenExpert}
+        />
+        <TrustedResults />
+        <GrowthInsights
+          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenExpert={handleOpenExpert}
+        />
+        <GrowthEcosystemCTA
+          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenExpert={handleOpenExpert}
+        />
+      </main >
 
-      {/* Footer */}
-      <Footer
-        onOpenContactSales={() => setContactSalesOpen(true)}
-        onOpenExpert={handleOpenExpert}
-        onOpenLogin={() => setLoginOpen(true)}
-      />
+  {/* Footer */ }
+  < Footer
+    onOpenContactSales={() => setContactSalesOpen(true)}
+    onOpenExpert={handleOpenExpert}
+    onOpenLogin={() => setLoginOpen(true)}
+   />
 
-      {/* Interactive Modals as separate modules */}
+{/* Interactive Modals as separate modules */ }
       <Login
         isOpen={loginOpen}
         onClose={() => setLoginOpen(false)}
@@ -97,7 +130,7 @@ const Home = () => {
         isOpen={sparkleOpen}
         onClose={() => setSparkleOpen(false)}
       />
-    </div>
+    </div >
   );
 };
 
