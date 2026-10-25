@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Body from './Body';
 import Footer from './Footer';
+import TrustedPartners from './TrustedPartners';
 import Login from './Login';
 import Search from './Search';
 import ContactSales from './ContactSales';
@@ -53,6 +54,7 @@ const Home = () => {
           onOpenExpert={handleOpenExpert}
           onOpenContactSales={() => setContactSalesOpen(true)}
         />
+        <TrustedPartners />
       </main>
 
       {/* Footer */}
