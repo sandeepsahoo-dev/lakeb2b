@@ -43,6 +43,20 @@ import Whitelabel from './pages/aboutus/Whitelabel';
 import NewsAndEvents from './pages/aboutus/NewsAndEvents';
 import Customers from './pages/aboutus/Customers';
 
+// Resources pages
+import CaseStudies from './pages/resources/CaseStudies';
+import Testimonials from './pages/resources/Testimonials';
+import News from './pages/resources/News';
+import Whitepapers from './pages/resources/Whitepapers';
+import Blog from './pages/resources/Blog';
+import MarketingTools from './pages/resources/MarketingTools';
+import Videos from './pages/resources/Videos';
+import OutboundBenchmarkReport from './pages/resources/OutboundBenchmarkReport';
+import IntentSignalsPlaybook from './pages/resources/IntentSignalsPlaybook';
+import EnterpriseCaseStudy from './pages/resources/EnterpriseCaseStudy';
+import RoiCalculator from './pages/resources/RoiCalculator';
+import FreeSamplePack from './pages/resources/FreeSamplePack';
+
 function App() {
   return (
     <BrowserRouter>
@@ -90,6 +104,21 @@ function App() {
         <Route path="/about/whitelabel" element={<Whitelabel />} />
         <Route path="/about/news-and-events" element={<NewsAndEvents />} />
         <Route path="/about/customers" element={<Customers />} />
+
+        {/* Resources */}
+        <Route path="/resources/case-studies" element={<CaseStudies />} />
+        <Route path="/resources/testimonials" element={<Testimonials />} />
+        <Route path="/resources/news" element={<News />} />
+        <Route path="/resources/whitepapers" element={<Whitepapers />} />
+        <Route path="/resources/blog" element={<Blog />} />
+        <Route path="/resources/blogs" element={<Blog />} />
+        <Route path="/resources/marketing-tools" element={<MarketingTools />} />
+        <Route path="/resources/videos" element={<Videos />} />
+        <Route path="/resources/outbound-benchmark-report" element={<OutboundBenchmarkReport />} />
+        <Route path="/resources/intent-signals-playbook" element={<IntentSignalsPlaybook />} />
+        <Route path="/resources/enterprise-case-study" element={<EnterpriseCaseStudy />} />
+        <Route path="/resources/roi-calculator" element={<RoiCalculator />} />
+        <Route path="/resources/free-sample-pack" element={<FreeSamplePack />} />
       </Routes>
     </BrowserRouter>
   );
