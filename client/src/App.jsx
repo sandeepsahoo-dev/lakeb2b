@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 
-// Talk To An Expert page
+// Lead Pages
 import TalkToExpert from './pages/TalkToExpert';
+import GetFreeSample from './pages/GetFreeSample';
 
 // Data Intelligence pages
 import CompanyAPI from './pages/CompanyAPI';
@@ -71,6 +72,10 @@ function App() {
         <Route path="/talk-to-an-expert" element={<TalkToExpert />} />
         <Route path="/talk-to-expert" element={<TalkToExpert />} />
 
+        {/* Get A Free Sample */}
+        <Route path="/get-a-free-sample" element={<GetFreeSample />} />
+        <Route path="/free-sample" element={<GetFreeSample />} />
+
         {/* Data Intelligence */}
         <Route path="/data-intelligence/company-api" element={<CompanyAPI />} />
         <Route path="/data-intelligence/people-api" element={<PeopleAPI />} />
@@ -125,7 +130,7 @@ function App() {
         <Route path="/resources/intent-signals-playbook" element={<IntentSignalsPlaybook />} />
         <Route path="/resources/enterprise-case-study" element={<EnterpriseCaseStudy />} />
         <Route path="/resources/roi-calculator" element={<RoiCalculator />} />
-        <Route path="/resources/free-sample-pack" element={<FreeSamplePack />} />
+        <Route path="/resources/free-sample-pack" element={<GetFreeSample />} />
       </Routes>
     </BrowserRouter>
   );

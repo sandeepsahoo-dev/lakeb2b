@@ -43,6 +43,8 @@ const Home = () => {
   const handleOpenExpert = (mode = 'talk_expert', prefilledIndustry = '') => {
     if (mode === 'talk_expert') {
       navigate('/talk-to-an-expert');
+    } else if (mode === 'free_sample') {
+      navigate('/get-a-free-sample');
     } else {
       setExpertModal({ open: true, mode, prefilledIndustry });
     }
