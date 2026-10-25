@@ -5,6 +5,7 @@ import Footer from './Footer';
 import DataTrustSection from './DataTrustSection';
 import DataSolutions from './DataSolutions';
 import B2BDataCloud from './B2BDataCloud';
+import RealBusinessImpact from './RealBusinessImpact';
 import Login from './Login';
 import Search from './Search';
 import ContactSales from './ContactSales';
@@ -59,6 +60,10 @@ const Home = () => {
         <DataTrustSection />
         <DataSolutions />
         <B2BDataCloud />
+        <RealBusinessImpact
+          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenExpert={handleOpenExpert}
+        />
       </main>
 
       {/* Footer */}
