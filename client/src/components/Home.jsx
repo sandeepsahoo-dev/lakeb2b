@@ -8,6 +8,7 @@ import B2BDataCloud from './B2BDataCloud';
 import RealBusinessImpact from './RealBusinessImpact';
 import MultiChannelCampaigns from './MultiChannelCampaigns';
 import SuccessStories from './SuccessStories';
+import TrustedResults from './TrustedResults';
 import Login from './Login';
 import Search from './Search';
 import ContactSales from './ContactSales';
@@ -74,6 +75,7 @@ const Home = () => {
           onOpenContactSales={() => setContactSalesOpen(true)}
           onOpenExpert={handleOpenExpert}
         />
+        <TrustedResults />
       </main>
 
       {/* Footer */}
