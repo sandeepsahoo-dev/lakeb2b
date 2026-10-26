@@ -32,6 +32,14 @@ const LoginPage = () => {
     setIsError(false);
     setMessage(null);
 
+    const rawName = email.includes('@') ? email.split('@')[0] : email;
+    const formattedName = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+    const demoUser = {
+      name: formattedName,
+      email: email,
+      role: 'Member',
+    };
+
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
@@ -41,24 +49,27 @@ const LoginPage = () => {
       const data = await res.json();
 
       if (res.ok && data.success) {
+        const userToSave = data.user || demoUser;
+        localStorage.setItem('lakeb2b_user', JSON.stringify(userToSave));
+        window.dispatchEvent(new Event('lakeb2b_auth_change'));
         setIsError(false);
         setMessage(data.message || 'Login successful!');
-        setCurrentUser(data.user);
         setTimeout(() => {
           navigate('/');
-        }, 1200);
+        }, 1000);
       } else {
         setIsError(true);
         setMessage(data.message || 'Invalid credentials.');
       }
     } catch {
       // Graceful demo mode fallback
+      localStorage.setItem('lakeb2b_user', JSON.stringify(demoUser));
+      window.dispatchEvent(new Event('lakeb2b_auth_change'));
       setIsError(false);
       setMessage('Authenticated in Demo Mode. Welcome back!');
-      setCurrentUser({ email, name: email.split('@')[0], role: 'Verified Member' });
       setTimeout(() => {
         navigate('/');
-      }, 1200);
+      }, 1000);
     } finally {
       setLoading(false);
     }

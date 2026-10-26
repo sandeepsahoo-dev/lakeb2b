@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search as SearchIcon, ChevronDown, Sparkles, Menu, X } from 'lucide-react';
+import { Search as SearchIcon, ChevronDown, Sparkles, Menu, X, User, LogOut } from 'lucide-react';
 import DataIntelligence from './DataIntelligence';
 import Solutions from './Solutions';
 import Industries from './Industries';
@@ -17,8 +17,54 @@ const Navbar = ({
 }) => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [authProfile, setAuthProfile] = useState(null);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const navRef = useRef(null);
+  const profileRef = useRef(null);
   const navigate = useNavigate();
+
+  // Sync auth user from localStorage & events
+  useEffect(() => {
+    const syncUser = () => {
+      try {
+        const stored = localStorage.getItem('lakeb2b_user');
+        if (stored) {
+          setAuthProfile(JSON.parse(stored));
+        } else if (user) {
+          setAuthProfile(user);
+        } else {
+          setAuthProfile(null);
+        }
+      } catch {
+        setAuthProfile(user || null);
+      }
+    };
+    syncUser();
+    window.addEventListener('storage', syncUser);
+    window.addEventListener('lakeb2b_auth_change', syncUser);
+    return () => {
+      window.removeEventListener('storage', syncUser);
+      window.removeEventListener('lakeb2b_auth_change', syncUser);
+    };
+  }, [user]);
+
+  // Close profile dropdown on click outside
+  useEffect(() => {
+    const handleProfileOutside = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setProfileDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleProfileOutside);
+    return () => document.removeEventListener('mousedown', handleProfileOutside);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('lakeb2b_user');
+    setAuthProfile(null);
+    setProfileDropdownOpen(false);
+    window.dispatchEvent(new Event('lakeb2b_auth_change'));
+  };
 
   const handleContactSalesClick = () => {
     if (onOpenContactSales) {
@@ -445,29 +491,141 @@ const Navbar = ({
             <SearchIcon style={{ width: '18px', height: '18px' }} />
           </button>
 
-          {/* LOG IN */}
-          <button
-            onClick={handleLoginClick}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: user ? '#c084fc' : '#ffffff',
-              fontFamily: 'var(--font-heading)',
-              fontSize: '13px',
-              fontWeight: '700',
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              padding: '6px 4px',
-              transition: 'color 0.2s ease',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#c084fc')}
-            onMouseLeave={(e) => {
-              if (!user) e.currentTarget.style.color = '#ffffff';
-            }}
-          >
-            {user ? user.name.split(' ')[0] : 'LOG IN'}
-          </button>
+          {/* Profile Icon + 1st Name OR LOG IN */}
+          {authProfile ? (
+            <div ref={profileRef} style={{ position: 'relative' }}>
+              <button
+                onClick={() => setProfileDropdownOpen((prev) => !prev)}
+                style={{
+                  background: 'rgba(168, 85, 247, 0.15)',
+                  border: '1px solid rgba(168, 85, 247, 0.35)',
+                  color: '#ffffff',
+                  borderRadius: '24px',
+                  padding: '5px 12px 5px 6px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(168, 85, 247, 0.25)';
+                  e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(168, 85, 247, 0.15)';
+                  e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.35)';
+                }}
+              >
+                <div
+                  style={{
+                    width: '26px',
+                    height: '26px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #a855f7, #ec4899)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#ffffff',
+                  }}
+                >
+                  <User size={14} />
+                </div>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: '13px',
+                    fontWeight: '700',
+                    letterSpacing: '0.02em',
+                    color: '#ffffff',
+                  }}
+                >
+                  {authProfile.name ? authProfile.name.trim().split(' ')[0] : 'User'}
+                </span>
+                <ChevronDown
+                  size={14}
+                  style={{
+                    color: '#c084fc',
+                    transform: profileDropdownOpen ? 'rotate(180deg)' : 'none',
+                    transition: 'transform 0.2s ease',
+                  }}
+                />
+              </button>
+
+              {profileDropdownOpen && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '44px',
+                    right: 0,
+                    backgroundColor: '#ffffff',
+                    color: '#0f172a',
+                    borderRadius: '12px',
+                    boxShadow: '0 12px 36px rgba(0,0,0,0.25)',
+                    padding: '12px',
+                    minWidth: '180px',
+                    zIndex: 100,
+                    fontFamily: 'var(--font-body)',
+                  }}
+                >
+                  <div style={{ padding: '4px 8px', borderBottom: '1px solid #f1f5f9', marginBottom: '8px' }}>
+                    <div style={{ fontSize: '13.5px', fontWeight: '700', color: '#0f172a' }}>
+                      {authProfile.name}
+                    </div>
+                    {authProfile.email && (
+                      <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', wordBreak: 'break-all' }}>
+                        {authProfile.email}
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    style={{
+                      width: '100%',
+                      background: '#fef2f2',
+                      border: 'none',
+                      borderRadius: '6px',
+                      color: '#dc2626',
+                      padding: '8px 12px',
+                      fontSize: '12px',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      justifyContent: 'center',
+                      transition: 'background 0.15s ease',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = '#fee2e2')}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = '#fef2f2')}
+                  >
+                    <LogOut size={13} /> Log Out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={handleLoginClick}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#ffffff',
+                fontFamily: 'var(--font-heading)',
+                fontSize: '13px',
+                fontWeight: '700',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                padding: '6px 4px',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#c084fc')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#ffffff')}
+            >
+              LOG IN
+            </button>
+          )}
 
           {/* CONTACT SALES Pill Button */}
           <button

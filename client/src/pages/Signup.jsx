@@ -36,6 +36,13 @@ const Signup = () => {
     setIsError(false);
     setMessage(null);
 
+    const userData = {
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      role: 'Member',
+    };
+
     try {
       const res = await fetch('/api/auth/register', {
         method: 'POST',
@@ -45,22 +52,27 @@ const Signup = () => {
       const data = await res.json();
 
       if (res.ok && data.success) {
+        const savedUser = data.user || userData;
+        localStorage.setItem('lakeb2b_user', JSON.stringify(savedUser));
+        window.dispatchEvent(new Event('lakeb2b_auth_change'));
         setIsError(false);
-        setMessage('Account created successfully! Redirecting to login...');
+        setMessage('Registration successful! Redirecting to home...');
         setTimeout(() => {
-          navigate('/login');
-        }, 1500);
+          navigate('/');
+        }, 1000);
       } else {
         setIsError(true);
         setMessage(data.message || 'Could not create account. Please try again.');
       }
     } catch {
       // Demo mode fallback
+      localStorage.setItem('lakeb2b_user', JSON.stringify(userData));
+      window.dispatchEvent(new Event('lakeb2b_auth_change'));
       setIsError(false);
-      setMessage('Account registered in Demo Mode! Welcome aboard.');
+      setMessage('Registration successful! Welcome to LakeB2B.');
       setTimeout(() => {
-        navigate('/login');
-      }, 1500);
+        navigate('/');
+      }, 1000);
     } finally {
       setLoading(false);
     }

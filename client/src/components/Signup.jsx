@@ -27,6 +27,13 @@ const Signup = ({ isOpen, onClose, onSignupSuccess }) => {
     setIsError(false);
     setMessage(null);
 
+    const userData = {
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      role: 'Member',
+    };
+
     try {
       const res = await fetch('/api/auth/register', {
         method: 'POST',
@@ -36,20 +43,25 @@ const Signup = ({ isOpen, onClose, onSignupSuccess }) => {
       const data = await res.json();
 
       if (res.ok && data.success) {
+        const savedUser = data.user || userData;
+        localStorage.setItem('lakeb2b_user', JSON.stringify(savedUser));
+        window.dispatchEvent(new Event('lakeb2b_auth_change'));
         setIsError(false);
         setMessage('Registration successful! Welcome to LakeB2B.');
-        if (onSignupSuccess) onSignupSuccess(data.user);
-        setTimeout(() => onClose(), 1200);
+        if (onSignupSuccess) onSignupSuccess(savedUser);
+        setTimeout(() => onClose(), 1000);
       } else {
         setIsError(true);
         setMessage(data.message || 'Registration failed.');
       }
     } catch {
       // Demo fallback
+      localStorage.setItem('lakeb2b_user', JSON.stringify(userData));
+      window.dispatchEvent(new Event('lakeb2b_auth_change'));
       setIsError(false);
       setMessage('Registered in Demo Mode! Welcome to LakeB2B.');
-      if (onSignupSuccess) onSignupSuccess({ name: formData.name, email: formData.email });
-      setTimeout(() => onClose(), 1200);
+      if (onSignupSuccess) onSignupSuccess(userData);
+      setTimeout(() => onClose(), 1000);
     } finally {
       setLoading(false);
     }
