@@ -462,7 +462,7 @@ const LoginPage = () => {
         >
           Don't have an account?{' '}
           <Link
-            to="/contact-sales"
+            to="/signup"
             style={{
               color: '#38bdf8',
               fontWeight: '700',

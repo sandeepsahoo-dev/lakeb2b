@@ -7,6 +7,7 @@ import TalkToExpert from './pages/TalkToExpert';
 import GetFreeSample from './pages/GetFreeSample';
 import ContactSales from './pages/ContactSales';
 import LoginPage from './pages/Login';
+import SignupPage from './pages/Signup';
 
 // Data Intelligence pages
 import CompanyAPI from './pages/CompanyAPI';
@@ -82,8 +83,9 @@ function App() {
         <Route path="/contact-sales" element={<ContactSales />} />
         <Route path="/contact-us" element={<ContactSales />} />
 
-        {/* Login Page */}
+        {/* Login & Signup Pages */}
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
         {/* Data Intelligence */}
         <Route path="/data-intelligence/company-api" element={<CompanyAPI />} />
