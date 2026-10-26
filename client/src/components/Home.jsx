@@ -30,15 +30,19 @@ const Home = () => {
   // User state
   const [currentUser, setCurrentUser] = useState(null);
 
+  const navigate = useNavigate();
+
+  const handleOpenContactSales = () => {
+    navigate('/contact-sales');
+  };
+
   // Global helper for nested component triggers
   React.useEffect(() => {
-    window.openContactSales = () => setContactSalesOpen(true);
+    window.openContactSales = () => navigate('/contact-sales');
     return () => {
       delete window.openContactSales;
     };
-  }, []);
-
-  const navigate = useNavigate();
+  }, [navigate]);
 
   const handleOpenExpert = (mode = 'talk_expert', prefilledIndustry = '') => {
     if (mode === 'talk_expert') {
@@ -60,7 +64,7 @@ const Home = () => {
       <Navbar
         onOpenSearch={() => setSearchOpen(true)}
         onOpenLogin={() => setLoginOpen(true)}
-        onOpenContactSales={() => setContactSalesOpen(true)}
+        onOpenContactSales={handleOpenContactSales}
         onOpenSparkle={() => setSparkleOpen(true)}
         onOpenExpert={handleOpenExpert}
         user={currentUser}
@@ -70,43 +74,43 @@ const Home = () => {
       <main>
         <Body
           onOpenExpert={handleOpenExpert}
-          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenContactSales={handleOpenContactSales}
         />
         <TrustedPartners />
         <DataTrustSection />
         <DataSolutions />
         <B2BDataCloud />
         <RealBusinessImpact
-          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenContactSales={handleOpenContactSales}
           onOpenExpert={handleOpenExpert}
         />
         <MultiChannelCampaigns
-          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenContactSales={handleOpenContactSales}
           onOpenExpert={handleOpenExpert}
         />
         <SuccessStories
-          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenContactSales={handleOpenContactSales}
           onOpenExpert={handleOpenExpert}
         />
         <TrustedResults />
         <GrowthInsights
-          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenContactSales={handleOpenContactSales}
           onOpenExpert={handleOpenExpert}
         />
         <GrowthEcosystemCTA
-          onOpenContactSales={() => setContactSalesOpen(true)}
+          onOpenContactSales={handleOpenContactSales}
           onOpenExpert={handleOpenExpert}
         />
-      </main >
+      </main>
 
-  {/* Footer */ }
-  < Footer
-    onOpenContactSales={() => setContactSalesOpen(true)}
-    onOpenExpert={handleOpenExpert}
-    onOpenLogin={() => setLoginOpen(true)}
-   />
+      {/* Footer */}
+      <Footer
+        onOpenContactSales={handleOpenContactSales}
+        onOpenExpert={handleOpenExpert}
+        onOpenLogin={() => setLoginOpen(true)}
+      />
 
-{/* Interactive Modals as separate modules */ }
+      {/* Interactive Modals as separate modules */}
       <Login
         isOpen={loginOpen}
         onClose={() => setLoginOpen(false)}
@@ -117,7 +121,7 @@ const Home = () => {
         isOpen={searchOpen}
         onClose={() => setSearchOpen(false)}
         onSelectResult={(item) => {
-          if (item.category === 'Solutions') setContactSalesOpen(true);
+          if (item.category === 'Solutions') handleOpenContactSales();
           else if (item.category === 'Data Intelligence') handleOpenExpert('talk_expert');
           else handleOpenExpert('free_sample');
         }}
