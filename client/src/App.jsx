@@ -2,10 +2,11 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 
-// Lead Pages
+// Lead & Auth Pages
 import TalkToExpert from './pages/TalkToExpert';
 import GetFreeSample from './pages/GetFreeSample';
 import ContactSales from './pages/ContactSales';
+import LoginPage from './pages/Login';
 
 // Data Intelligence pages
 import CompanyAPI from './pages/CompanyAPI';
@@ -80,6 +81,9 @@ function App() {
         {/* Contact Sales */}
         <Route path="/contact-sales" element={<ContactSales />} />
         <Route path="/contact-us" element={<ContactSales />} />
+
+        {/* Login Page */}
+        <Route path="/login" element={<LoginPage />} />
 
         {/* Data Intelligence */}
         <Route path="/data-intelligence/company-api" element={<CompanyAPI />} />

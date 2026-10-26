@@ -63,7 +63,7 @@ const Home = () => {
       {/* Top Navbar */}
       <Navbar
         onOpenSearch={() => setSearchOpen(true)}
-        onOpenLogin={() => setLoginOpen(true)}
+        onOpenLogin={() => navigate('/login')}
         onOpenContactSales={handleOpenContactSales}
         onOpenSparkle={() => setSparkleOpen(true)}
         onOpenExpert={handleOpenExpert}
@@ -107,7 +107,7 @@ const Home = () => {
       <Footer
         onOpenContactSales={handleOpenContactSales}
         onOpenExpert={handleOpenExpert}
-        onOpenLogin={() => setLoginOpen(true)}
+        onOpenLogin={() => navigate('/login')}
       />
 
       {/* Interactive Modals as separate modules */}
