@@ -28,6 +28,14 @@ const Navbar = ({
     }
   };
 
+  const handleLoginClick = () => {
+    if (onOpenLogin) {
+      onOpenLogin();
+    } else {
+      navigate('/login');
+    }
+  };
+
   // Close dropdown on outside click
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -439,7 +447,7 @@ const Navbar = ({
 
           {/* LOG IN */}
           <button
-            onClick={onOpenLogin}
+            onClick={handleLoginClick}
             style={{
               background: 'transparent',
               border: 'none',
