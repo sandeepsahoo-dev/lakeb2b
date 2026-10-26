@@ -5,6 +5,7 @@ import Home from './components/Home';
 // Lead Pages
 import TalkToExpert from './pages/TalkToExpert';
 import GetFreeSample from './pages/GetFreeSample';
+import ContactSales from './pages/ContactSales';
 
 // Data Intelligence pages
 import CompanyAPI from './pages/CompanyAPI';
@@ -75,6 +76,10 @@ function App() {
         {/* Get A Free Sample */}
         <Route path="/get-a-free-sample" element={<GetFreeSample />} />
         <Route path="/free-sample" element={<GetFreeSample />} />
+
+        {/* Contact Sales */}
+        <Route path="/contact-sales" element={<ContactSales />} />
+        <Route path="/contact-us" element={<ContactSales />} />
 
         {/* Data Intelligence */}
         <Route path="/data-intelligence/company-api" element={<CompanyAPI />} />

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search as SearchIcon, ChevronDown, Sparkles, Menu, X } from 'lucide-react';
 import DataIntelligence from './DataIntelligence';
 import Solutions from './Solutions';
@@ -17,6 +18,15 @@ const Navbar = ({
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleContactSalesClick = () => {
+    if (onOpenContactSales) {
+      onOpenContactSales();
+    } else {
+      navigate('/contact-sales');
+    }
+  };
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -453,7 +463,7 @@ const Navbar = ({
 
           {/* CONTACT SALES Pill Button */}
           <button
-            onClick={onOpenContactSales}
+            onClick={handleContactSalesClick}
             className="btn-pill-white"
           >
             CONTACT SALES
